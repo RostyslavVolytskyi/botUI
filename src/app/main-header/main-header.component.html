@@ -1,8 +1,16 @@
 <mat-toolbar color="primary">
-  <span>Application Title</span>
+  <span>Do this shit!</span>
 
   <!-- This fills the remaining space of the current row -->
   <span class="example-fill-remaining-space"></span>
 
-  <span>Right Aligned Text</span>
+  <div class="button-row">
+    <!--<button mat-raised-button>Basic</button>-->
+    <!--<button mat-raised-button color="primary">Primary</button>-->
+    <!--<button mat-raised-button color="accent">Accent</button>-->
+    <!--<button mat-raised-button color="warn">Warn</button>-->
+    <!--<button mat-raised-button disabled>Disabled</button>-->
+    <a mat-raised-button routerLink="/login">Login</a>
+    <a mat-raised-button routerLink="/register">Register</a>
+  </div>
 </mat-toolbar>
