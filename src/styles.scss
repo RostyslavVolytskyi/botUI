@@ -4,3 +4,8 @@ body {
   margin: 0;
   background-color: #bdbdbd;
 }
+
+form {
+  display: flex;
+  flex-direction: column;
+}
