@@ -23,4 +23,8 @@ export class AuthService {
   logout(): void {
     this.isLoggedIn = false;
   }
+
+  getAuthorizationToken() {
+    return 'token';
+  }
 }

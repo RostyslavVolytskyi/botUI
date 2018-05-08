@@ -11,6 +11,7 @@ import { RegisterComponent } from './register/register.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { MainContentComponent } from './main-content/main-content.component';
 import {LoadingSpinnerComponent} from "./loading-spinner/loading-spinner.component";
+import {httpInterceptorProviders} from "./http-interceptors/index";
 
 @NgModule({
   declarations: [
@@ -29,7 +30,7 @@ import {LoadingSpinnerComponent} from "./loading-spinner/loading-spinner.compone
     ReactiveFormsModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
