@@ -1,0 +1,8 @@
+<div class="loading-spinner-wrapper" *ngIf="(spinnerInfo$ | async).isSpinnerVisible">
+	<div class="loader">
+		<svg class="circular">
+			<circle class="path" cx="70" cy="70" r="33" fill="none" stroke-width="7" stroke-miterlimit="10"/>
+		</svg>
+		<div class="spinner-message" *ngIf="(spinnerInfo$ | async).isSpinnerMessageVisible">Getting your data...</div>
+	</div>
+</div>

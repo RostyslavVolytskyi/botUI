@@ -1,0 +1,82 @@
+$green: #20bf55;
+$blue: #1da1f2;
+$black: #1b1e23;
+
+$width: 140px;
+
+.loading-spinner-wrapper {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	background-color: rgba(60, 72, 88, 0.48);
+	z-index: 9999;
+}
+
+.loader {
+	position: absolute;
+	width: $width;
+	height: $width;
+	left: 50%;
+	top: 45%;
+
+	.spinner-message {
+		color: $black;
+		font-size: 20px;
+		white-space: nowrap;
+		margin-left: -10px;
+	}
+}
+
+.circular {
+	animation: rotate 2s linear infinite;
+	height: $width;
+	position: relative;
+	width: $width;
+}
+
+.path {
+	stroke-dasharray: 1,200;
+	stroke-dashoffset: 0;
+	animation:
+			dash 1.5s ease-in-out infinite,
+			color 6s ease-in-out infinite;
+	stroke-linecap: round;
+}
+
+@keyframes rotate {
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+@keyframes dash {
+	0% {
+		stroke-dasharray: 1,200;
+		stroke-dashoffset: 0;
+	}
+	50% {
+		stroke-dasharray: 89,200;
+		stroke-dashoffset: -35;
+	}
+	100% {
+		stroke-dasharray: 89,200;
+		stroke-dashoffset: -124;
+	}
+}
+
+@keyframes color {
+	100%, 0% {
+		stroke: $blue;
+	}
+	40% {
+		stroke: $green;
+	}
+	66% {
+		stroke: $blue;
+	}
+	80%, 90% {
+		stroke: $green;
+	}
+}
