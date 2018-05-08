@@ -10,7 +10,9 @@
     <!--<button mat-raised-button color="accent">Accent</button>-->
     <!--<button mat-raised-button color="warn">Warn</button>-->
     <!--<button mat-raised-button disabled>Disabled</button>-->
-    <a mat-raised-button routerLink="/login">Login</a>
-    <a mat-raised-button routerLink="/register">Register</a>
+    <a mat-raised-button routerLink="/login" *ngIf="!authService.isLoggedIn">Login</a>
+    <a mat-raised-button routerLink="/register" *ngIf="!authService.isLoggedIn">Register</a>
+
+    <a mat-raised-button routerLink="/login" *ngIf="authService.isLoggedIn" (click)="logout()">Logout</a>
   </div>
 </mat-toolbar>
