@@ -3,6 +3,8 @@ import {FormControl, Validators} from '@angular/forms';
 import {Router} from "@angular/router";
 import {AuthService} from "../services/auth.service";
 import {LoadingSpinnerService} from "../loading-spinner/loading-spinner.service";
+import { environment } from '../../environments/environment';
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'login',
@@ -14,7 +16,10 @@ export class LoginComponent implements OnInit {
   message: string;
   hidePass = true;
 
-  constructor(public authService: AuthService, public router: Router, private loadingSpinnerService: LoadingSpinnerService) { }
+  constructor(public authService: AuthService,
+              public router: Router,
+              private loadingSpinnerService: LoadingSpinnerService,
+              private http: HttpClient) { }
 
   ngOnInit() { }
 
@@ -29,6 +34,7 @@ export class LoginComponent implements OnInit {
 
   onLogin() {
     this.message = 'Trying to log in ...';
+    // this.testLogin();
 
     const login$ = this.authService.login();
     this.loadingSpinnerService.spinUntilDone(login$);
@@ -42,5 +48,9 @@ export class LoginComponent implements OnInit {
         this.router.navigate([redirect]);
       }
     });
+  }
+
+  testLogin() {
+    return this.http.get(`${environment.baseURL}/test`).subscribe((data: any) => console.log('data', data));
   }
 }

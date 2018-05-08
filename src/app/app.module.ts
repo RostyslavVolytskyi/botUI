@@ -12,6 +12,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { MainContentComponent } from './main-content/main-content.component';
 import {LoadingSpinnerComponent} from "./loading-spinner/loading-spinner.component";
 import {httpInterceptorProviders} from "./http-interceptors/index";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import {httpInterceptorProviders} from "./http-interceptors/index";
   imports: [
     BrowserModule,
     FormsModule,
+    HttpClientModule,
     MaterialModule,
     ReactiveFormsModule,
     AppRoutingModule
