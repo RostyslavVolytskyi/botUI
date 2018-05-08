@@ -11,6 +11,7 @@ import {AuthService} from "../services/auth.service";
 export class LoginComponent implements OnInit {
 
   message: string;
+  hidePass = true;
 
   constructor(public authService: AuthService, public router: Router) { }
 
@@ -19,7 +20,7 @@ export class LoginComponent implements OnInit {
   }
 
   email = new FormControl('', [Validators.required, Validators.email]);
-  hidePass = true;
+  password = new FormControl('', [Validators.required]);
 
   getErrorMessage() {
     return this.email.hasError('required') ? 'You must enter a value' :

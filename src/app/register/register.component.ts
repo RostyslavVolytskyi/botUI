@@ -8,14 +8,17 @@ import {FormControl, Validators} from '@angular/forms';
 })
 export class RegisterComponent implements OnInit {
 
+  hidePass = true;
+  hidePassRep = true;
+
   constructor() { }
 
   ngOnInit() {
   }
 
   email = new FormControl('', [Validators.required, Validators.email]);
-  hidePass = true;
-  hidePassRep = true;
+  password = new FormControl('', [Validators.required]);
+  repeatPassword = new FormControl('', [Validators.required]);
 
   getErrorMessage() {
     return this.email.hasError('required') ? 'You must enter a value' :

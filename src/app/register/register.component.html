@@ -9,16 +9,16 @@
     </mat-form-field>
 
     <mat-form-field>
-      <input matInput placeholder="Enter your password" [type]="hidePass ? 'password' : 'text'">
+      <input matInput placeholder="Enter your password" [formControl]="password" [type]="hidePass ? 'password' : 'text'">
       <mat-icon matSuffix (click)="hidePass = !hidePass">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
     </mat-form-field>
 
     <mat-form-field>
-      <input matInput placeholder="Repeat your password" [type]="hidePassRep ? 'password' : 'text'">
+      <input matInput placeholder="Repeat your password" [formControl]="repeatPassword" [type]="hidePassRep ? 'password' : 'text'">
       <mat-icon matSuffix (click)="hidePassRep = !hidePassRep">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
     </mat-form-field>
 
-    <button mat-button color="primary">Register!</button>
+    <button mat-button color="primary" [disabled]="email.invalid || password.invalid || repeatPassword.invalid">Register!</button>
 
   </form>
 

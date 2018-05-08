@@ -10,11 +10,11 @@
     </mat-form-field>
 
     <mat-form-field>
-      <input matInput placeholder="Enter your password" [type]="hidePass ? 'password' : 'text'">
+      <input matInput placeholder="Enter your password" [formControl]="password" [type]="hidePass ? 'password' : 'text'">
       <mat-icon matSuffix (click)="hidePass = !hidePass">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
     </mat-form-field>
 
-    <button type="submit" mat-button color="primary">Login!</button>
+    <button type="submit" mat-button color="primary" [disabled]="email.invalid || password.invalid">Login!</button>
 
   </form>
 
