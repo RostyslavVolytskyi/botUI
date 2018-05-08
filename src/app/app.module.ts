@@ -10,6 +10,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { MainContentComponent } from './main-content/main-content.component';
+import {LoadingSpinnerComponent} from "./loading-spinner/loading-spinner.component";
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { MainContentComponent } from './main-content/main-content.component';
     PageNotFoundComponent,
     LoginComponent,
     RegisterComponent,
-    MainContentComponent
+    MainContentComponent,
+    LoadingSpinnerComponent
   ],
   imports: [
     BrowserModule,

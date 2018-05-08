@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import {Router} from "@angular/router";
 import {AuthService} from "../services/auth.service";
+import {LoadingSpinnerService} from "../loading-spinner/loading-spinner.service";
 
 @Component({
   selector: 'login',
@@ -13,11 +14,9 @@ export class LoginComponent implements OnInit {
   message: string;
   hidePass = true;
 
-  constructor(public authService: AuthService, public router: Router) { }
+  constructor(public authService: AuthService, public router: Router, private loadingSpinnerService: LoadingSpinnerService) { }
 
-  ngOnInit() {
-    this.setMessage();
-  }
+  ngOnInit() { }
 
   email = new FormControl('', [Validators.required, Validators.email]);
   password = new FormControl('', [Validators.required]);
@@ -28,15 +27,12 @@ export class LoginComponent implements OnInit {
         '';
   }
 
-  setMessage() {
-    this.message = 'Logged ' + (this.authService.isLoggedIn ? 'in' : 'out');
-  }
-
   onLogin() {
     this.message = 'Trying to log in ...';
 
-    this.authService.login().subscribe(() => {
-      this.setMessage();
+    const login$ = this.authService.login();
+    this.loadingSpinnerService.spinUntilDone(login$);
+    login$.subscribe(() => {
       if (this.authService.isLoggedIn) {
         // Get the redirect URL from our auth service
         // If no redirect has been set, use the default
