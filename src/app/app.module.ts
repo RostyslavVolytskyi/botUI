@@ -9,6 +9,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { MainContentComponent } from './main-content/main-content.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
     MainHeaderComponent,
     PageNotFoundComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    MainContentComponent
   ],
   imports: [
     BrowserModule,
