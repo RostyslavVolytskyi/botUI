@@ -34,9 +34,13 @@ export class LoginComponent implements OnInit {
 
   onLogin() {
     this.message = 'Trying to log in ...';
-    // this.testLogin();
 
-    const login$ = this.authService.login();
+    const payload = {
+      email: this.email.value,
+      password: this.password.value
+    };
+
+    const login$ = this.authService.login(payload);
     this.loadingSpinnerService.spinUntilDone(login$);
     login$.subscribe(() => {
       if (this.authService.isLoggedIn) {
@@ -48,9 +52,5 @@ export class LoginComponent implements OnInit {
         this.router.navigate([redirect]);
       }
     });
-  }
-
-  testLogin() {
-    return this.http.get(`${environment.baseURL}/test`).subscribe((data: any) => console.log('data', data));
   }
 }

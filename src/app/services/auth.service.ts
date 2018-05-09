@@ -19,9 +19,8 @@ export class AuthService {
 
   constructor(private http: HttpClient, private errorMsgService: ErrorMsgService) {}
 
-  login(): Observable<any> {
-    return of(true).pipe(
-      delay(1000),
+  login(payload): Observable<any> {
+    return this.http.post(`${environment.baseURL}/login`, payload).pipe(
       tap((data: any) => {
         localStorage.setItem(STORAGE_TOKEN_KEY, JSON.stringify(data.token));
         this.isLoggedIn = true;
@@ -29,7 +28,7 @@ export class AuthService {
         this.errorMsgService.showErrorMsg(`${err.error.message}. ${err.error.error.errmsg}`);
       }),
       share()
-    );
+    )
   }
 
   register(payload): Observable<any> {
