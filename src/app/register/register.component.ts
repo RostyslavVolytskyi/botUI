@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
-import {HttpClient} from "@angular/common/http";
-import {environment} from "../../environments/environment";
+import {AuthService} from "../services/auth.service";
+import {LoadingSpinnerService} from "../loading-spinner/loading-spinner.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'register',
@@ -13,10 +14,11 @@ export class RegisterComponent implements OnInit {
   hidePass = true;
   hidePassRep = true;
 
-  constructor(private http: HttpClient) { }
+  constructor(private authService: AuthService,
+              public router: Router,
+              private loadingSpinnerService: LoadingSpinnerService) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   email = new FormControl('', [Validators.required, Validators.email]);
   password = new FormControl('', [Validators.required]);
@@ -33,8 +35,19 @@ export class RegisterComponent implements OnInit {
       email: this.email.value,
       password: this.password.value
     };
-    return this.http.post(`${environment.baseURL}/register`, payload).
-      subscribe(data => console.log('register', data));
+    const register$ = this.authService.register(payload);
+    this.loadingSpinnerService.spinUntilDone(register$);
+    register$.subscribe(() => {
+      if (this.authService.isLoggedIn) {
+        // Get the redirect URL from our auth service
+        // If no redirect has been set, use the default
+        let redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '';
+
+        // Redirect the user
+        this.router.navigate([redirect]);
+      }
+    });
+
   }
 
 }
