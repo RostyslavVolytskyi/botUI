@@ -1,0 +1,10 @@
+<div class="error-block" *ngIf="errorMsgService.isError$ | async">
+  <div class="msg-block">
+    <P><b>Some error occurred:</b></P>
+    <p>{{errorMsgService.isError$ | async}}</p>
+  </div>
+  <div class='close-btn' (click)="errorMsgService.showErrorMsg('')">
+    X
+  </div>
+
+</div>

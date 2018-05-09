@@ -13,6 +13,7 @@ import { MainContentComponent } from './main-content/main-content.component';
 import {LoadingSpinnerComponent} from "./loading-spinner/loading-spinner.component";
 import {httpInterceptorProviders} from "./http-interceptors/index";
 import {HttpClientModule} from "@angular/common/http";
+import { ErrorMsgComponent } from './error-msg/error-msg.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import {HttpClientModule} from "@angular/common/http";
     LoginComponent,
     RegisterComponent,
     MainContentComponent,
-    LoadingSpinnerComponent
+    LoadingSpinnerComponent,
+    ErrorMsgComponent
   ],
   imports: [
     BrowserModule,
