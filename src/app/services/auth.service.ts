@@ -25,7 +25,7 @@ export class AuthService {
         localStorage.setItem(STORAGE_TOKEN_KEY, JSON.stringify(data.token));
         this.isLoggedIn = true;
       }, (err) => {
-        this.errorMsgService.showErrorMsg(`${err.error.message}. ${err.error.error.errmsg}`);
+        this.errorMsgService.showErrorMsg(`${err.error.message}`);
       }),
       share()
     )
@@ -37,7 +37,7 @@ export class AuthService {
         localStorage.setItem(STORAGE_TOKEN_KEY, JSON.stringify(data.token));
         this.isLoggedIn = true;
       }, (err) => {
-        this.errorMsgService.showErrorMsg(`${err.error.message}. ${err.error.error.errmsg}`);
+        this.errorMsgService.showErrorMsg(`${err.error.message}`);
       }),
       share()
     )
