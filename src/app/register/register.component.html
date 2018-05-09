@@ -10,12 +10,12 @@
 
     <mat-form-field>
       <input matInput placeholder="Enter your password" [formControl]="password" [type]="hidePass ? 'password' : 'text'">
-      <mat-icon matSuffix (click)="hidePass = !hidePass">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+      <mat-icon matSuffix (click)="hidePass = !hidePass">{{hidePass ? 'visibility' : 'visibility_off'}}</mat-icon>
     </mat-form-field>
 
     <mat-form-field>
       <input matInput placeholder="Repeat your password" [formControl]="repeatPassword" [type]="hidePassRep ? 'password' : 'text'">
-      <mat-icon matSuffix (click)="hidePassRep = !hidePassRep">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+      <mat-icon matSuffix (click)="hidePassRep = !hidePassRep">{{hidePassRep ? 'visibility' : 'visibility_off'}}</mat-icon>
     </mat-form-field>
 
     <mat-error *ngIf="password.value !== repeatPassword.value && !repeatPassword.pristine && !password.pristine">Repeated password is wrong</mat-error>
